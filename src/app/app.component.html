@@ -1,0 +1,16 @@
+<!--<div style="margin-bottom: 16px;">-->
+<!--  <button nz-button (click)="newTab()">ADD</button>-->
+<!--</div>-->
+<!--<nz-tabset [(nzSelectedIndex)]="index" nzType="editable-card" nzHideAdd (nzClose)="closeTab($event)">-->
+<!--  <nz-tab *ngFor="let tab of tabs; let i = index" [nzClosable]="i > 1" [nzTitle]="tab">Content of {{ tab }}</nz-tab>-->
+<!--</nz-tabset>-->
+<div style="margin-bottom: 16px;">
+  <button nz-button (click)="newTab1()">ADD new Dynamic COm 1</button>
+  <button nz-button (click)="newTab2()">ADD new Dynamic COm Other Module</button>
+<!--  <button nz-button (click)="newHtml()">ADD newHtml</button>-->
+<!--  <button nz-button (click)="newHtmlMulti()">ADD newHtml MultiTab</button>-->
+<!--  <button nz-button (click)="newTemlateRef(templateRef)">ADD new tamplate</button>-->
+<!--  <ng-template #templateRef> Nội dung Template Ref</ng-template>-->
+  {{$curTab|async}}
+</div>
+<layout-tab-manager></layout-tab-manager>

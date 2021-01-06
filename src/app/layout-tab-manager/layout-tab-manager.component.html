@@ -1,0 +1,23 @@
+<nz-tabset [nzSelectedIndex]="$curentTab|async" (nzSelectedIndexChange)="changeTab($event)" nzType="editable-card"
+           nzHideAdd (nzClose)="closeTab($event)">
+  <nz-tab *ngFor="let tab of $listTab|async; let i = index" [nzClosable]="i > 0" [nzTitle]="titleTemplate">
+    <ng-template #titleTemplate>
+      <i [className]="tab.iconClass"></i>
+      {{ tab.title }}
+    </ng-template>
+    <ng-container [ngSwitch]="tab.viewType">
+      <ng-container *ngSwitchCase="'template'">
+        <ng-container *ngTemplateOutlet="tab.viewRef"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'html'">
+        <div [innerHTML]="tab.viewRef"></div>
+      </ng-container>
+      <layout-tab-content
+        *ngSwitchDefault
+        [component]="{
+        dataRef: tab.dataRef,
+        componentRef: tab.viewRef
+      }"></layout-tab-content>
+    </ng-container>
+  </nz-tab>
+</nz-tabset>
